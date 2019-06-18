@@ -152,6 +152,254 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-18T15:18:32.000Z">2019-06-18</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/NET/">.NET</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes membaca (Sekitar 946 kata)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/06/18/The-strategy-pattern-Advanced-Resolver-Pattern/">The strategy pattern - Advanced (Resolver Pattern)</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="The-Strategy-Pattern"><a href="#The-Strategy-Pattern" class="headerlink" title="The Strategy Pattern"></a>The Strategy Pattern</h2><p>This pattern is a simpler design pattern - it allows you to:</p>
+<ol>
+<li>Encapsulate a family of related algorithms</li>
+<li>Allow them to vary</li>
+<li>Allow a class to maintain a single purpose and implementation</li>
+<li>Seperate the calculation from the delivery of its results</li>
+</ol>
+<p>By doing this we can maintain standard principles, leaving the code open to extension but closed to modification.</p>
+<p>Simple Example</p>
+<pre class=" language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// The Strategy abstract class, which defines an interface common to all supported strategy algorithms.</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">CookStrategy</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">Cook</span><span class="token punctuation">(</span><span class="token keyword">string</span> food<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// A Concrete Strategy class</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token keyword">class</span> <span class="token class-name">Grilling</span> <span class="token punctuation">:</span> CookStrategy
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">void</span> <span class="token function">Cook</span><span class="token punctuation">(</span><span class="token keyword">string</span> food<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"\nCooking "</span> <span class="token operator">+</span> food <span class="token operator">+</span> <span class="token string">" by grilling it."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// A Concrete Strategy class</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token keyword">class</span> <span class="token class-name">OvenBaking</span> <span class="token punctuation">:</span> CookStrategy
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">void</span> <span class="token function">Cook</span><span class="token punctuation">(</span><span class="token keyword">string</span> food<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"\nCooking "</span> <span class="token operator">+</span> food <span class="token operator">+</span> <span class="token string">" by oven baking it."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// A Concrete Strategy class</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token keyword">class</span> <span class="token class-name">DeepFrying</span> <span class="token punctuation">:</span> CookStrategy
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">void</span> <span class="token function">Cook</span><span class="token punctuation">(</span><span class="token keyword">string</span> food<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"\nCooking "</span> <span class="token operator">+</span> food <span class="token operator">+</span> <span class="token string">" by deep frying it"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// The Context class, which maintains a reference to the chosen Strategy.</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token keyword">class</span> <span class="token class-name">CookingMethod</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token keyword">string</span> Food<span class="token punctuation">;</span>
+        <span class="token keyword">private</span> CookStrategy _cookStrategy<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">SetCookStrategy</span><span class="token punctuation">(</span>CookStrategy cookStrategy<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>_cookStrategy <span class="token operator">=</span> cookStrategy<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">SetFood</span><span class="token punctuation">(</span><span class="token keyword">string</span> name<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Food <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Cook</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            _cookStrategy<span class="token punctuation">.</span><span class="token function">Cook</span><span class="token punctuation">(</span>Food<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>Simple Execution</p>
+<pre class=" language-csharp"><code class="language-csharp">
+CookingMethod cookMethod <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CookingMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"What food would you like to cook?"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> food <span class="token operator">=</span> Console<span class="token punctuation">.</span><span class="token function">ReadLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+cookMethod<span class="token punctuation">.</span><span class="token function">SetFood</span><span class="token punctuation">(</span>food<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"What cooking strategy would you like to use (1-3)?"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> input <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>Console<span class="token punctuation">.</span><span class="token function">ReadKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>KeyChar<span class="token punctuation">.</span><span class="token function">ToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">switch</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        cookMethod<span class="token punctuation">.</span><span class="token function">SetCookStrategy</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Grilling</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        cookMethod<span class="token punctuation">.</span><span class="token function">Cook</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">case</span> <span class="token number">2</span><span class="token punctuation">:</span>
+        cookMethod<span class="token punctuation">.</span><span class="token function">SetCookStrategy</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">OvenBaking</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        cookMethod<span class="token punctuation">.</span><span class="token function">Cook</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">case</span> <span class="token number">3</span><span class="token punctuation">:</span>
+        cookMethod<span class="token punctuation">.</span><span class="token function">SetCookStrategy</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">DeepFrying</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        cookMethod<span class="token punctuation">.</span><span class="token function">Cook</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">default</span><span class="token punctuation">:</span>
+        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Invalid Selection!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+Console<span class="token punctuation">.</span><span class="token function">ReadKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="The-limmitation"><a href="#The-limmitation" class="headerlink" title="The limmitation"></a>The limmitation</h2><p>For this and almost every single example I can find in existance its basically a way to register your types and apply them.<br>The switch is essentially moved but calling through and doing what you need to do is still in the wrong place and you need to know exaclty the method you want to use!! We need something more dynamic, where the stratergy knows what it is applied to and based on the information provided by the food in this instance, would be chosen for the execution of that dish!</p>
+<h2 id="The-Resolver-Pattern"><a href="#The-Resolver-Pattern" class="headerlink" title="The Resolver Pattern"></a>The Resolver Pattern</h2><p>This is where the seperation comes in, as I cannot find an example that follows this I will coin it was the resolver pattern.<br>Each ‘Resolver’ is registered with the application for dependancy injection, like anything else and its very existance now allows it to be used and identifed by the data processing it.</p>
+<p>Lets visit the food example again to see how this would be done in practice</p>
+<p>We start with a service, its job? Using all available ‘resolvers’ it will process the data it is given (Food dishes)</p>
+<pre class=" language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">IDishResolutionService</span>
+<span class="token punctuation">{</span>
+    Task <span class="token function">ResolveDishesAsync</span><span class="token punctuation">(</span>
+        IEnumerable<span class="token operator">&lt;</span>FoodDish<span class="token operator">></span> recordData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Its implementation will have one job, identify the required / available resolver and execute it.<br>The resolvers themselves have thier own interface to work from, one method to execute, one to identify what meal type it applies to</p>
+<pre class=" language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">IFoodCookingResolver</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">bool</span> <span class="token function">AppliesTo</span><span class="token punctuation">(</span><span class="token keyword">string</span> control<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    Task <span class="token function">CookFoodAsync</span><span class="token punctuation">(</span>IDbConnection conn<span class="token punctuation">,</span> FoodDish dish<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The service implementaion will take all available resolvers via DI</p>
+<pre class=" language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token function">DishResolutionService</span><span class="token punctuation">(</span>
+    IConnectionFactory databaseConnectionFactory<span class="token punctuation">,</span>
+    IEnumerable<span class="token operator">&lt;</span>IFoodCookingResolver<span class="token operator">></span> dishResolvers<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    _satabaseConnectionFactory <span class="token operator">=</span> databaseConnectionFactory <span class="token operator">?</span><span class="token operator">?</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArgumentNullException</span><span class="token punctuation">(</span><span class="token function">nameof</span><span class="token punctuation">(</span>databaseConnectionFactory<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    _dishResolvers <span class="token operator">=</span> dishResolvers <span class="token operator">?</span><span class="token operator">?</span>
+        Enumerable<span class="token punctuation">.</span><span class="token generic-method function">Empty<span class="token punctuation">&lt;</span>IFoodCookingResolver<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>These are registered with anything else, heres the fancy way in an MVC app:</p>
+<pre class=" language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">ConfigureServices</span><span class="token punctuation">(</span>IServiceCollection services<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    services<span class="token punctuation">.</span><span class="token generic-method function">TryAddScoped<span class="token punctuation">&lt;</span>IDishResolutionService<span class="token punctuation">></span></span><span class="token punctuation">(</span>ctx <span class="token operator">=</span><span class="token operator">></span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">DishResolutionService</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span><span class="token generic-method function">GetService<span class="token punctuation">&lt;</span>IConnectionFactory<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">GetResolvers</span><span class="token punctuation">(</span>ctx<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">private</span> IEnumerable<span class="token operator">&lt;</span>IFoodCookingResolver<span class="token operator">></span> <span class="token function">GetResolvers</span><span class="token punctuation">(</span>IServiceProvider ctx<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">yield</span> <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">FishResolver</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span><span class="token generic-method function">GetService<span class="token punctuation">&lt;</span>IConnectionFactory<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">yield</span> <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">SingleMealResolver</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span><span class="token generic-method function">GetService<span class="token punctuation">&lt;</span>IConnectionFactory<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">yield</span> <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">FamilyBBQResolver</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span><span class="token generic-method function">GetService<span class="token punctuation">&lt;</span>IConnectionFactory<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">yield</span> <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">DefaultResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Each new resolver will simply be registered in the project and this will allow it to be picked up in the service that executes the food cooking based on data within the food item itself, leaving the original code untouched and including a default resolver to go to if none apply to it specifically.</p>
+<h2 id="Example-Resolver"><a href="#Example-Resolver" class="headerlink" title="Example Resolver"></a>Example Resolver</h2><pre class=" language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">FishResolver</span> <span class="token punctuation">:</span> IFoodCookingResolver
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">readonly</span> IDbConnection _dbConnection<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">FishResolver</span><span class="token punctuation">(</span>IDbConnection conn<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        _dbConnection <span class="token operator">=</span> conn <span class="token operator">?</span><span class="token operator">?</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArgumentNullException</span><span class="token punctuation">(</span><span class="token function">nameof</span><span class="token punctuation">(</span>conn<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">bool</span> <span class="token function">AppliesTo</span><span class="token punctuation">(</span><span class="token keyword">string</span> control<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> control <span class="token operator">==</span> FoodType<span class="token punctuation">.</span>OvernFood<span class="token punctuation">.</span><span class="token function">UppercaseName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">async</span> Task <span class="token function">CookFoodAsync</span><span class="token punctuation">(</span>FoodDish meal<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">await</span> _dbConnection<span class="token punctuation">.</span><span class="token function">QueryAsync</span><span class="token punctuation">(</span><span class="token string">"select 'example, im not doing any data stuff here'"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        console<span class="token punctuation">.</span><span class="token function">writeline</span><span class="token punctuation">(</span>$<span class="token string">"Cooking that in the oven - as I oven cooks things like {meal.Name}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>As with this example, all resolvers state what they apply to, so when the service seeks the required resolver, it identifies itself and has contained logic for what to do with this type of food.</p>
+<pre class=" language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">async</span> Task <span class="token function">ResolveControlsAsync</span><span class="token punctuation">(</span>
+            IEnumerable<span class="token operator">&lt;</span>RecordData<span class="token operator">></span> recordData<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> groups <span class="token operator">=</span> recordData
+            <span class="token punctuation">.</span><span class="token function">SelectMany</span><span class="token punctuation">(</span>x <span class="token operator">=</span><span class="token operator">></span> x<span class="token punctuation">.</span>Controls<span class="token punctuation">,</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> meta<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">(</span>x<span class="token punctuation">.</span>Ruid<span class="token punctuation">,</span> meta<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">GroupBy</span><span class="token punctuation">(</span>x <span class="token operator">=</span><span class="token operator">></span> x<span class="token punctuation">.</span>meta<span class="token punctuation">.</span>ControlType<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">var</span> tasks <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">List</span><span class="token operator">&lt;</span>Task<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">using</span> <span class="token punctuation">(</span><span class="token keyword">var</span> conn <span class="token operator">=</span> _databaseConnectionFactory<span class="token punctuation">.</span><span class="token function">GetConnection</span><span class="token punctuation">(</span>DatabaseType<span class="token punctuation">.</span>HR<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token keyword">var</span> item <span class="token keyword">in</span> groups<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                tasks<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>
+                    _controlDataResolvers
+                    <span class="token punctuation">.</span><span class="token function">FirstOr</span><span class="token punctuation">(</span>x <span class="token operator">=</span><span class="token operator">></span> x<span class="token punctuation">.</span><span class="token function">AppliesTo</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span>Key<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">new</span> <span class="token class-name">DefaultResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">.</span><span class="token function">CookFoodAsync</span><span class="token punctuation">(</span>conn<span class="token punctuation">,</span> item<span class="token punctuation">.</span><span class="token function">ToList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">var</span> results <span class="token operator">=</span> <span class="token keyword">await</span> Task<span class="token punctuation">.</span><span class="token function">WhenAll</span><span class="token punctuation">(</span>tasks<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> results<span class="token punctuation">.</span><span class="token function">SelectMany</span><span class="token punctuation">(</span>x <span class="token operator">=</span><span class="token operator">></span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>In the example above the service groups by the type of meal and sends them all off to be handled in the resolver togther - one at a time or as a group is fine depending on what your doing.<br>So the service checks the available resolvers, picks the one for the data it has, executes the resolver against the object and completes.<br>The core setup need no longer be changed, but the resolvers can be added to, registered and the system keeps working as it did, default resolvers are just a backup here, where say the oven is used by default unless a specific resolver says otherwise.</p>
+<p>This allows the resolvers to differ 100% in what they do, what services they use etc. Keeping the flow of logic but seperation of type.</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-06-18T13:26:09.000Z">2019-06-18</time>
                 
                 <div class="level-item">
@@ -390,7 +638,7 @@ usage
                         Artikel
                     </p>
                     <p class="title has-text-weight-normal">
-                        2
+                        3
                     </p>
                 </div>
             </div>
@@ -410,7 +658,7 @@ usage
                         Tag
                     </p>
                     <p class="title has-text-weight-normal">
-                        3
+                        4
                     </p>
                 </div>
             </div>
@@ -513,7 +761,7 @@ usage
                 <span class="level-item">.NET</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li>
             </ul>
@@ -527,7 +775,7 @@ usage
         <h3 class="menu-label">
             Awan tag
         </h3>
-        <a href="/tags/NET/" style="font-size: 10px;">.NET</a> <a href="/tags/NET-Core/" style="font-size: 10px;">.NET Core</a> <a href="/tags/functional/" style="font-size: 10px;">functional</a>
+        <a href="/tags/NET/" style="font-size: 20px;">.NET</a> <a href="/tags/NET-Core/" style="font-size: 20px;">.NET Core</a> <a href="/tags/design-patterns/" style="font-size: 10px;">design patterns</a> <a href="/tags/functional/" style="font-size: 10px;">functional</a>
     </div>
 </div>
 
@@ -541,6 +789,25 @@ usage
         <h3 class="menu-label">
             Terbaru
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/06/18/The-strategy-pattern-Advanced-Resolver-Pattern/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="The strategy pattern - Advanced (Resolver Pattern)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-18T15:18:32.000Z">2019-06-18</time></div>
+                    <a href="/2019/06/18/The-strategy-pattern-Advanced-Resolver-Pattern/" class="has-link-black-ter is-size-6">The strategy pattern - Advanced (Resolver Pattern)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NET/">.NET</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -598,7 +865,7 @@ usage
                     <span class="level-item">June 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -619,13 +886,20 @@ usage
                 <div class="control">
                     <a class="tags has-addons" href="/tags/NET/">
                         <span class="tag">.NET</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/NET-Core/">
                         <span class="tag">.NET Core</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/design-patterns/">
+                        <span class="tag">design patterns</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -662,6 +936,25 @@ usage
         
         <article class="media">
             
+            <a href="/2019/06/18/The-strategy-pattern-Advanced-Resolver-Pattern/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="The strategy pattern - Advanced (Resolver Pattern)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-18T15:18:32.000Z">2019-06-18</time></div>
+                    <a href="/2019/06/18/The-strategy-pattern-Advanced-Resolver-Pattern/" class="has-link-black-ter is-size-6">The strategy pattern - Advanced (Resolver Pattern)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NET/">.NET</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/06/18/Function-Programming-in-C/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Function Programming in C#">
@@ -716,7 +1009,7 @@ usage
                     <span class="level-item">June 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -737,13 +1030,20 @@ usage
                 <div class="control">
                     <a class="tags has-addons" href="/tags/NET/">
                         <span class="tag">.NET</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/NET-Core/">
                         <span class="tag">.NET Core</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/design-patterns/">
+                        <span class="tag">design patterns</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>

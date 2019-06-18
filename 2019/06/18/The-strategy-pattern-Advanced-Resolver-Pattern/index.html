@@ -2,19 +2,24 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>Tag: .NET - Programming Blog</title>
+<title>The strategy pattern - Advanced (Resolver Pattern) - Programming Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Programming Blog">
-<meta property="og:url" content="https://alchemy86.github.io/tags/NET/index.html">
+    <meta name="description" content="Design Patterns">
+<meta name="keywords" content=".NET,.NET Core,design patterns">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The strategy pattern - Advanced (Resolver Pattern)">
+<meta property="og:url" content="https://alchemy86.github.io/2019/06/18/The-strategy-pattern-Advanced-Resolver-Pattern/index.html">
 <meta property="og:site_name" content="Programming Blog">
+<meta property="og:description" content="Design Patterns">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://alchemy86.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-06-18T15:56:19.456Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Programming Blog">
+<meta name="twitter:title" content="The strategy pattern - Advanced (Resolver Pattern)">
+<meta name="twitter:description" content="Design Patterns">
 <meta name="twitter:image" content="https://alchemy86.github.io/images/og_image.png">
 
 
@@ -89,7 +94,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Programming Blog" height="28">
+                <img src="/images/logo.svg" alt="The strategy pattern - Advanced (Resolver Pattern)" height="28">
             
             </a>
         </div>
@@ -135,17 +140,6 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">Tag</a></li>
-            <li class="is-active"><a href="#" aria-current="page">.NET</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
@@ -170,7 +164,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/06/18/The-strategy-pattern-Advanced-Resolver-Pattern/">The strategy pattern - Advanced (Resolver Pattern)</a>
+                The strategy pattern - Advanced (Resolver Pattern)
             
         </h1>
         <div class="content">
@@ -381,207 +375,15 @@ Console<span class="token punctuation">.</span><span class="token function">Read
 
         </div>
         
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-18T13:26:09.000Z">2019-06-18</time>
-                
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/NET/">.NET</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/NET/">.NET</a>, <a class="has-link-grey -link" href="/tags/NET-Core/">.NET Core</a>, <a class="has-link-grey -link" href="/tags/design-patterns/">design patterns</a>
                 </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 minutes membaca (Sekitar 778 kata)
-                </span>
-                
-                
             </div>
         </div>
         
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/06/18/Function-Programming-in-C/">Function Programming in C#</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="Functional-Programming"><a href="#Functional-Programming" class="headerlink" title="Functional Programming"></a>Functional Programming</h2><p>Functional programming is a style that treats computation as the evaluation of<br>mathematical functions and avoids changing-state and mutable data.</p>
-<h2 id="Immutable-Types"><a href="#Immutable-Types" class="headerlink" title="Immutable Types"></a>Immutable Types</h2><p>This is an object whos state cannot be modified after it is created.</p>
-<p>Mutable</p>
-<pre class=" language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Rectangle</span>
-<span class="token punctuation">{</span>
-     <span class="token keyword">public</span> <span class="token keyword">int</span> Length <span class="token punctuation">{</span><span class="token keyword">get</span><span class="token punctuation">;</span><span class="token keyword">set</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-     <span class="token keyword">public</span> <span class="token keyword">int</span> Height <span class="token punctuation">{</span><span class="token keyword">get</span><span class="token punctuation">;</span><span class="token keyword">set</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-
-     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Grow</span><span class="token punctuation">(</span><span class="token keyword">int</span> length<span class="token punctuation">,</span> <span class="token keyword">int</span> height<span class="token punctuation">)</span>
-     <span class="token punctuation">{</span>
-     Length <span class="token operator">+</span><span class="token operator">=</span> length<span class="token punctuation">;</span>
-     Height <span class="token operator">+</span><span class="token operator">=</span> height<span class="token punctuation">;</span>
-     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-Rectangle r <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rectangle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-r<span class="token punctuation">.</span>Length <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
-r<span class="token punctuation">.</span>Height <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
-r<span class="token punctuation">.</span><span class="token function">Grow</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// r.Length is 15, r.Height is 20, same</span>
-instance of r
-</code></pre>
-<p>Immutable</p>
-<pre class=" language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ImmutableRectangle</span>
-<span class="token punctuation">{</span>
-     <span class="token keyword">int</span> Length <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-     <span class="token keyword">int</span> Height <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-
-     <span class="token keyword">public</span> <span class="token function">ImmutableRectangle</span><span class="token punctuation">(</span><span class="token keyword">int</span> length<span class="token punctuation">,</span>
-     <span class="token keyword">int</span> height<span class="token punctuation">)</span>
-     <span class="token punctuation">{</span>
-         Length <span class="token operator">=</span> length<span class="token punctuation">;</span>
-         Height <span class="token operator">=</span> height<span class="token punctuation">;</span>
-     <span class="token punctuation">}</span>
-     <span class="token keyword">public</span> ImmutableRectangle <span class="token function">Grow</span><span class="token punctuation">(</span><span class="token keyword">int</span> length<span class="token punctuation">,</span> <span class="token keyword">int</span> height<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">new</span> <span class="token class-name">ImmutableRectangle</span><span class="token punctuation">(</span>Length <span class="token operator">+</span> length<span class="token punctuation">,</span> Height <span class="token operator">+</span> height<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-ImmutableRectangle r <span class="token operator">=</span> <span class="token keyword">new</span>
-<span class="token class-name">ImmutableRectangle</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-r <span class="token operator">=</span> r<span class="token punctuation">.</span><span class="token function">Grow</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// r.Length is 15, r.Height is 20, is a new</span>
-instance of r
-</code></pre>
-<h2 id="Expressions-vs-Statements"><a href="#Expressions-vs-Statements" class="headerlink" title="Expressions vs Statements"></a>Expressions vs Statements</h2><p>Statments define an actiona nd are executed for thier side-effect.<br>Expressions produce a result without mutating state.</p>
-<pre class=" language-csharp"><code class="language-csharp">Statement
-<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">string</span> <span class="token function">GetSalutation</span><span class="token punctuation">(</span><span class="token keyword">int</span> hour<span class="token punctuation">)</span> <span class="token punctuation">{</span>
- <span class="token keyword">string</span> salutation<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// placeholder value</span>
- <span class="token keyword">if</span> <span class="token punctuation">(</span>hour <span class="token operator">&lt;</span> <span class="token number">12</span><span class="token punctuation">)</span>
- salutation <span class="token operator">=</span> <span class="token string">"Good Morning"</span><span class="token punctuation">;</span>
- <span class="token keyword">else</span>
- salutation <span class="token operator">=</span> <span class="token string">"Good Afternoon"</span><span class="token punctuation">;</span>
- <span class="token keyword">return</span> salutation<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// return mutated variable</span>
-<span class="token punctuation">}</span>
-Expression
-<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">string</span> <span class="token function">GetSalutation</span><span class="token punctuation">(</span><span class="token keyword">int</span> hour<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span>
- hour <span class="token operator">&lt;</span> <span class="token number">12</span> <span class="token operator">?</span> <span class="token string">"Good Morning"</span> <span class="token punctuation">:</span> <span class="token string">"Good Afternoon"</span><span class="token punctuation">;</span>
-</code></pre>
-<h2 id="Value-Tuples"><a href="#Value-Tuples" class="headerlink" title="Value Tuples"></a><a href="https://blogs.msdn.microsoft.com/mazhou/2017/05/26/c-7-series-part-1-value-tuples/" target="_blank" rel="noopener">Value Tuples</a></h2><p>Tuple is a more efficient and more productive lightweight syntax to define a data structure that carries more than one value.<br><strong>Requires NuGet Package System.ValueTuple</strong></p>
-<ul>
-<li>Represent data without DTO classes</li>
-<li>Lower memory footprint than a class</li>
-<li>Return multiple values from methods without the need for out variables</li>
-</ul>
-<pre class=" language-csharp"><code class="language-csharp"><span class="token punctuation">(</span><span class="token keyword">double</span> lat<span class="token punctuation">,</span> <span class="token keyword">double</span> lng<span class="token punctuation">)</span> <span class="token function">GetCoordinates</span><span class="token punctuation">(</span><span class="token keyword">string</span>
-query<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">//DO search query ...</span>
-    <span class="token keyword">return</span> <span class="token punctuation">(</span>lat<span class="token punctuation">:</span> <span class="token number">47.6450905056185</span><span class="token punctuation">,</span>
-    lng<span class="token punctuation">:</span> <span class="token number">122.130835641356</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> pos <span class="token operator">=</span> <span class="token function">GetCoordinates</span><span class="token punctuation">(</span>"<span class="token number">15700</span> NE 39th St<span class="token punctuation">,</span>
-Redmond<span class="token punctuation">,</span> WA"<span class="token punctuation">)</span><span class="token punctuation">;</span>
-pos<span class="token punctuation">.</span>lat<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//47.6450905056185</span>
-pos<span class="token punctuation">.</span>lng<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//122.130835641356</span>
-</code></pre>
-<h2 id="Func-Delegates"><a href="#Func-Delegates" class="headerlink" title="Func Delegates"></a>Func Delegates</h2><p>Func Delegates encapsulate a method. When declaring a Func, input and output parameters are specified as T1-T16, and TResult.</p>
-<ul>
-<li>Func<tresult> – matches a method that takes no arguments, and returns value of type TResult.</tresult></li>
-<li>Func&lt;T, TResult&gt; – matches a method that takes an argument of type T, and returns value of type TResult.</li>
-<li>Func&lt;T1, T2, TResult&gt; – matches a method that takes arguments of type T1 and T2, and returns value of type TResult.</li>
-<li>Func&lt;T1, T2, …, TResult&gt; – and so on up to 16 arguments, and returns value of type TResult.</li>
-</ul>
-<pre class=" language-csharp"><code class="language-csharp">Func<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> addOne <span class="token operator">=</span> n <span class="token operator">=</span><span class="token operator">></span> n <span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
-Func<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> addNums <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
-Func<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">bool</span><span class="token operator">></span> isZero <span class="token operator">=</span> n <span class="token operator">=</span><span class="token operator">></span> n <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token function">addOne</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 6</span>
-Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token function">isZero</span><span class="token punctuation">(</span><span class="token function">addNums</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//</span>
-True
-
-<span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">Count</span><span class="token punctuation">(</span>isZero<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 3</span>
-</code></pre>
-<h2 id="Higher-Order-Functions-Functions-as-Data"><a href="#Higher-Order-Functions-Functions-as-Data" class="headerlink" title="Higher Order Functions / Functions as Data"></a>Higher Order Functions / Functions as Data</h2><p>Higher-order function is a function taking one or more function parameters as input, or returning a function as output. The other functions are called first-order functions. (Again, in C#, the term function and the term method are identical.) C# supports higher-order function from the beginning, since a C# function can use almost anything as its input/output, except:</p>
-<p>Static types, like System.Convert, System.Math, etc., because there cannot be a value (instance) of a static type.<br>Special types in .NET framework, like System.Void.<br>A first-order function can take some data value as input and output:</p>
-<pre class=" language-csharp"><code class="language-csharp">method signature
-<span class="token keyword">int</span> IEnumerable<span class="token punctuation">.</span><span class="token generic-method function">Count<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>Func<span class="token operator">&lt;</span>T<span class="token punctuation">,</span> Bool<span class="token operator">></span>
-predicate<span class="token punctuation">)</span>
-Source code <span class="token keyword">for</span> <span class="token function">Count</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
- <span class="token keyword">foreach</span> <span class="token punctuation">(</span>TSource element <span class="token keyword">in</span> source<span class="token punctuation">)</span>
- <span class="token punctuation">{</span>
- <span class="token keyword">checked</span> <span class="token comment" spellcheck="true">// overflow exception check</span>
- <span class="token punctuation">{</span>
- <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">predicate</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//</span>
-func<span class="token operator">&lt;</span>T<span class="token punctuation">,</span>Bool<span class="token operator">></span> invoked
- <span class="token punctuation">{</span>
- count<span class="token operator">++</span><span class="token punctuation">;</span>
- <span class="token punctuation">}</span>
- <span class="token punctuation">}</span>
- <span class="token punctuation">}</span>
-<span class="token keyword">return</span> count<span class="token punctuation">;</span>
-usage
-<span class="token keyword">bool</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bools <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token keyword">false</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">,</span> <span class="token keyword">false</span><span class="token punctuation">,</span> <span class="token keyword">false</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-<span class="token keyword">int</span> f <span class="token operator">=</span> bools<span class="token punctuation">.</span><span class="token function">Count</span><span class="token punctuation">(</span>bln <span class="token operator">=</span><span class="token operator">></span> bln <span class="token operator">==</span> <span class="token keyword">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//</span>
-<span class="token keyword">out</span> <span class="token operator">=</span> <span class="token number">3</span>
-<span class="token keyword">int</span> t <span class="token operator">=</span> bools<span class="token punctuation">.</span><span class="token function">Count</span><span class="token punctuation">(</span>bln <span class="token operator">=</span><span class="token operator">></span> bln <span class="token operator">==</span> <span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// out</span>
-<span class="token operator">=</span> <span class="token number">1</span>
-</code></pre>
-<h2 id="Method-Chaining-Pipelines"><a href="#Method-Chaining-Pipelines" class="headerlink" title="Method Chaining (~Pipelines)"></a>Method Chaining (~Pipelines)</h2><p>Since C# lacks a Pipeline syntax, pipelines in C# are created with design patterns that allow for methods to chain.<br>The result of the method chain should produce the desired value and type.</p>
-<pre class=" language-csharp"><code class="language-csharp"><span class="token keyword">string</span> str <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
- <span class="token punctuation">.</span><span class="token function">Append</span><span class="token punctuation">(</span><span class="token string">"Hello "</span><span class="token punctuation">)</span>
- <span class="token punctuation">.</span><span class="token function">Append</span><span class="token punctuation">(</span><span class="token string">"World "</span><span class="token punctuation">)</span>
- <span class="token punctuation">.</span><span class="token function">ToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
- <span class="token punctuation">.</span><span class="token function">TrimEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
- <span class="token punctuation">.</span><span class="token function">ToUpper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<h2 id="Extension-Methods"><a href="#Extension-Methods" class="headerlink" title="Extension Methods"></a>Extension Methods</h2><p>Extension methods are a great way to extend method chains and add functionality to a class.</p>
-<pre class=" language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">// Extends the StringBuilder class to accept a predicate</span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> StringBuilder <span class="token function">AppendWhen</span><span class="token punctuation">(</span> <span class="token keyword">this</span> StringBuilder sb<span class="token punctuation">,</span> <span class="token keyword">string</span> <span class="token keyword">value</span><span class="token punctuation">,</span> <span class="token keyword">bool</span> predicate<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span>
- predicate <span class="token operator">?</span> sb<span class="token punctuation">.</span><span class="token function">Append</span><span class="token punctuation">(</span><span class="token keyword">value</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> sb<span class="token punctuation">;</span>
-
-<span class="token keyword">string</span> htmlButton <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
- <span class="token punctuation">.</span><span class="token function">Append</span><span class="token punctuation">(</span><span class="token string">"&lt;button"</span><span class="token punctuation">)</span>
- <span class="token punctuation">.</span><span class="token function">AppendWhen</span><span class="token punctuation">(</span><span class="token string">" disabled"</span><span class="token punctuation">,</span> isDisabled<span class="token punctuation">)</span>
- <span class="token punctuation">.</span><span class="token function">Append</span><span class="token punctuation">(</span><span class="token string">">Click me&lt;/button>"</span><span class="token punctuation">)</span>
- <span class="token punctuation">.</span><span class="token function">ToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<h2 id="Yield"><a href="#Yield" class="headerlink" title="Yield"></a>Yield</h2><p>Using yield to define an iterator removes the need for an explicit extra class (the class that holds the state for an enumeration.<br>You consume an iterator method by using a foreach statement or LINQ query.<br>Yield is the basis for many LINQ methods.</p>
-<pre class=" language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">// Without Yield</span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> IEnumerable<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span>
-<span class="token function">GreaterThan</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">,</span> <span class="token keyword">int</span> gt<span class="token punctuation">)</span> <span class="token punctuation">{</span>
- List<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> temp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">List</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token keyword">int</span> n <span class="token keyword">in</span> arr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
- <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">></span> gt<span class="token punctuation">)</span> temp<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
- <span class="token keyword">return</span> temp<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// With Yield</span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> IEnumerable<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span>
-<span class="token function">GreaterThan</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">,</span> <span class="token keyword">int</span> gt<span class="token punctuation">)</span> <span class="token punctuation">{</span>
- <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token keyword">int</span> n <span class="token keyword">in</span> arr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
- <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">></span> gt<span class="token punctuation">)</span> <span class="token keyword">yield</span> <span class="token keyword">return</span> n<span class="token punctuation">;</span>
- <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h2 id="LINQ"><a href="#LINQ" class="headerlink" title="LINQ"></a>LINQ</h2><p>The gateway to functional programming in C#. LINQ makes short work of most imperative programming routines that work on arrays and collections</p>
-
-        </div>
-        
         
         
     </div>
@@ -589,9 +391,55 @@ usage
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Suka dengan artikel ini? Bantu penulis dengan donasi melalui</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/06/18/Function-Programming-in-C/">
+                <span class="level-item">Function Programming in C#</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 </div>
@@ -1071,7 +919,7 @@ usage
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Programming Blog" height="28">
+                    <img src="/images/logo.svg" alt="The strategy pattern - Advanced (Resolver Pattern)" height="28">
                 
                 </a>
                 <p class="is-size-7">
