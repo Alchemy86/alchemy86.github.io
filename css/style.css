@@ -443,7 +443,6 @@ figure.highlight .gutter {
 }
 figure.highlight .tag,
 figure.highlight .title,
-figure.highlight .number,
 figure.highlight .section {
   display: inherit;
   font: inherit;
